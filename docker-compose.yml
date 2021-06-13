@@ -1,0 +1,15 @@
+version: "3.9"
+   
+services:
+  vault-main:
+    image: hashicorp/vault-enterprise
+    command:
+      [ vault, server,  -dev, -dev-root-token-id, root , -dev-listen-address=0.0.0.0:8200 ]
+  shell:
+    build: .
+    image: shell
+    environment:
+      - VAULT_ADDR=http://vault-main:8200  
+    links:
+      - vault-main
+    
