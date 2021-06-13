@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Encrypt 
+# Rotate 
 vault write -format json transit/encrypt/demo-key plaintext=$(base64 <<< "1111 1111 1111 1111") | jq -r '.data.ciphertext' > test1.txt
 
 # decrypt
