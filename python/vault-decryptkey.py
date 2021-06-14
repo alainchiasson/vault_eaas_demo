@@ -34,20 +34,6 @@ def decrypt_key():
     with open("secret.key", "w") as key_file:
         key_file.write(decrypt_data_response['data']['plaintext'])
 
-def generate_key():
-    """
-    Generates a key and save it into a file
-    """
-    gen_key_response = client.secrets.transit.generate_data_key(
-        name='demo-key',
-        key_type='plaintext',
-    )
-
-    with open("secret.key", "w") as key_file:
-        key_file.write(gen_key_response['data']['plaintext'])
-        
-    with open("cipher.key", "w") as key_file:
-        key_file.write(gen_key_response['data']['ciphertext'])
 
 
 if __name__ == "__main__":
