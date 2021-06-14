@@ -19,8 +19,9 @@ RUN  pip3 install pip --upgrade
 COPY python/requirements.txt .
 
 RUN pip install -r requirements.txt
+RUN rm requirements.txt
 
-COPY python/app.py /usr/local/bin
+COPY python/* /usr/local/bin
 
 # Set command line to wait for login.
 CMD exec /bin/bash -c "trap : TERM INT; sleep infinity & wait"
